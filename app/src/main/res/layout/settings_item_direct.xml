@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable name="title" type="String" />
+        <variable name="icon" type="android.graphics.drawable.Drawable" />
+        <variable name="extra" type="String" />
+        <variable name="iconTint" type="Integer" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@{icon}"
+            android:tint="@{iconTint != null ? iconTint : 0xFF6B7280}" />
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/item_icon"
+            android:text="@{title}"
+            android:textColor="#374151"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/item_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@+id/arrow"
+            android:text="@{extra}"
+            android:textColor="#9CA3AF"
+            android:textSize="14sp"
+            android:visibility="@{extra != null ? View.VISIBLE : View.GONE}" />
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_sign_in_arrow"
+            app:tint="#D1D5DB" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Bladder_frontend">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EstimationActivity" android:exported="false" />
+        <activity android:name=".RecommendationActivity" android:exported="false" />
+        <activity android:name=".RoleSelectionActivity" android:exported="false" />
+        <activity android:name=".DoctorLoginActivity" android:exported="false" />
+        <activity android:name=".DoctorSignUpActivity" android:exported="false" />
+        <activity android:name=".HomePageActivity" android:exported="false" />
+        <activity android:name=".ScanActivity" android:exported="false" />
+        <activity android:name=".CaptureActivity" android:exported="false" />
+        <activity android:name=".AnalyzeActivity" android:exported="false" />
+        <activity android:name=".ProcessingActivity" android:exported="false" />
+        <activity android:name=".ResultActivity" android:exported="false" />
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".LogoutActivity" android:exported="false" />
+        <activity android:name=".EditProfileActivity" android:exported="false" />
+        <activity android:name=".BackupActivity" android:exported="false" />
+        <activity android:name=".AnalyticsActivity" android:exported="false" />
+        <activity android:name=".TeamActivity" android:exported="false" />
+        <activity android:name=".Team_oneActivity" android:exported="false" />
+        <activity android:name=".Team_twoActivity" android:exported="false" />
+        <activity android:name=".Team_threeActivity" android:exported="false" />
+        <activity android:name=".Team_fourActivity" android:exported="false" />
+        <activity android:name=".AppointmentActivity" android:exported="false" />
+        <activity android:name=".Appointment_oneActivity" android:exported="false" />
+        <activity android:name=".TrainingActivity" android:exported="false" />
+        <activity android:name=".Training_oneActivity" android:exported="false" />
+        <activity android:name=".EquipActivity" android:exported="false" />
+        <activity android:name=".NotificationActivity" android:exported="false" />
+        <activity android:name=".Notification_oneActivity" android:exported="false" />
+        <activity android:name=".Student_portalActivity" android:exported="false" />
+        <activity android:name=".Student_logActivity" android:exported="false" />
+        <activity android:name=".DisplayActivity" android:exported="false" />
+        <activity android:name=".Display_oneActivity" android:exported="false" />
+        <activity android:name=".LanguageActivity" android:exported="false" />
+        <activity android:name=".SecurityActivity" android:exported="false" />
+        <activity android:name=".PrivacyActivity" android:exported="false" />
+        <activity android:name=".Privacy_oneActivity" android:exported="false" />
+        <activity android:name=".HelpActivity" android:exported="false" />
+        <activity android:name=".FeedActivity" android:exported="false" />
+        <activity android:name=".ContactActivity" android:exported="false" />
+        <activity android:name=".AboutActivity" android:exported="false" />
+        <activity android:name=".ReportActivity" android:exported="false" />
+        <activity android:name=".Report_oneActivity" android:exported="false" />
+        <activity android:name=".Report_twoActivity" android:exported="false" />
+        <activity android:name=".Report_threeActivity" android:exported="false" />
+        <activity android:name=".Report_fourActivity" android:exported="false" />
+        <activity android:name=".Report_fiveActivity" android:exported="false" />
+        <activity android:name=".Report_sixActivity" android:exported="false" />
+        <activity android:name=".Report_sevenActivity" android:exported="false" />
+        <activity android:name=".Report_eightActivity" android:exported="false" />
+        <activity android:name=".Report_nineActivity" android:exported="false" />
+        <activity android:name=".PatientActivity" android:exported="false" />
+        <activity android:name=".Patient_oneActivity" android:exported="false" />
+        <activity android:name=".Patient_twoActivity" android:exported="false" />
+        <activity android:name=".SearchActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FAFB"
+    tools:context=".Report_sixActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#0066CC"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@id/btn_back"
+                android:text="Detailed Comparison"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/notification_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_notifications"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@+id/notification_icon"
+                android:src="@drawable/ic_search"
+                app:tint="#FFFFFF" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_actions"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Volume Comparison Chart Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Volume Comparison"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Placeholder for Chart bars and values -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="24dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <!-- James -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="450ml" android:textStyle="bold" android:textColor="#111827" />
+                            <View android:layout_width="30dp" android:layout_height="80dp" android:layout_marginTop="8dp" android:background="#0066CC" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="James" android:textSize="12sp" android:textColor="#6B7280" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mar 10" android:textSize="10sp" android:textColor="#9CA3AF" />
+                        </LinearLayout>
+
+                        <!-- Sarah -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="620ml" android:textStyle="bold" android:textColor="#111827" />
+                            <View android:layout_width="30dp" android:layout_height="110dp" android:layout_marginTop="8dp" android:background="#F97316" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Sarah" android:textSize="12sp" android:textColor="#6B7280" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mar 09" android:textSize="10sp" android:textColor="#9CA3AF" />
+                        </LinearLayout>
+
+                        <!-- Robert -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="210ml" android:textStyle="bold" android:textColor="#111827" />
+                            <View android:layout_width="30dp" android:layout_height="40dp" android:layout_marginTop="8dp" android:background="#0066CC" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Robert" android:textSize="12sp" android:textColor="#6B7280" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mar 08" android:textSize="10sp" android:textColor="#9CA3AF" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:layout_gravity="center" android:background="@drawable/circle_image" android:backgroundTint="#16A34A" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:text="Normal" android:textSize="12sp" />
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:layout_gravity="center" android:layout_marginStart="16dp" android:background="@drawable/circle_image" android:backgroundTint="#F97316" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:text="Distended" android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Side-by-Side Metrics Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Side-by-Side Metrics"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:stretchColumns="1,2,3">
+
+                        <!-- Header Row -->
+                        <TableRow android:background="#F9FAFB" android:padding="8dp">
+                            <TextView android:text="Metric" android:textColor="#6B7280" android:textSize="12sp" android:textStyle="bold" />
+                            <TextView android:text="James" android:textAlignment="center" android:textColor="#6B7280" android:textSize="12sp" android:textStyle="bold" />
+                            <TextView android:text="Sarah" android:textAlignment="center" android:textColor="#6B7280" android:textSize="12sp" android:textStyle="bold" />
+                            <TextView android:text="Robert" android:textAlignment="center" android:textColor="#6B7280" android:textSize="12sp" android:textStyle="bold" />
+                        </TableRow>
+
+                        <!-- Rows -->
+                        <View android:layout_height="1dp" android:background="#E5E7EB" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Report ID" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="R-1023" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="R-1022" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="R-1021" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Date" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="Mar 10, 2024" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="Mar 09, 2024" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="Mar 08, 2024" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp" android:background="#EFF6FF">
+                            <TextView android:text="Volume" android:textColor="#6B7280" android:textSize="13sp" android:textStyle="bold" />
+                            <TextView android:text="450ml" android:textAlignment="center" android:textColor="#0066CC" android:textSize="13sp" android:textStyle="bold" />
+                            <TextView android:text="620ml" android:textAlignment="center" android:textColor="#0066CC" android:textSize="13sp" android:textStyle="bold" />
+                            <TextView android:text="210ml" android:textAlignment="center" android:textColor="#0066CC" android:textSize="13sp" android:textStyle="bold" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Status" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="Normal" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="Distended" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="Normal" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Width" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="4.2 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="5.1 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="3.6 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Height" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="5.1 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="6.3 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="4.0 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Depth" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="3.8 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="4.5 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="3.2 cm" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                        <View android:layout_height="1dp" android:background="#F3F4F6" />
+                        <TableRow android:padding="12dp">
+                            <TextView android:text="Confidence" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:text="98%" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="96%" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                            <TextView android:text="99%" android:textAlignment="center" android:textColor="#111827" android:textSize="13sp" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Key Differences Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Key Differences"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Insight 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_marginTop="2dp" android:src="@drawable/ic_analytics" app:tint="#F97316" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:text="Sarah Connor shows significantly higher volume (620ml) — flagged as distended. Consider follow-up." android:textColor="#374151" android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Insight 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_marginTop="2dp" android:src="@drawable/ic_check_circle" app:tint="#16A34A" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:text="James Wilson and Robert Smith are within normal range with consistent measurements." android:textColor="#374151" android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Insight 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_marginTop="2dp" android:src="@drawable/ic_analytics" app:tint="#3B82F6" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:text="Volume variance across reports: 410ml range (210ml – 620ml)." android:textColor="#374151" android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back_to_selection"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Back to Selection"
+            android:textAllCaps="false"
+            android:textColor="#0066CC"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:strokeColor="#0066CC"
+            app:strokeWidth="2dp" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export_comparison"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0066CC"
+            android:text="Export"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_manual_mode"
+            app:iconGravity="textStart"
+            app:iconTint="#FFFFFF" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
