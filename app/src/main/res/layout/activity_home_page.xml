@@ -1,69 +1,352 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="#F9FAFB"
     tools:context=".HomePageActivity">
+
+    <!-- Top Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#0066CC"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Dashboard"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/notification_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_notifications"
+                app:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/search_top_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toStartOf="@id/notification_icon"
+                android:src="@drawable/ic_search"
+                app:tint="#FFFFFF" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <!-- Header Section -->
-            <LinearLayout
+            <!-- Doctor Profile Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#0D47A1"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardBackgroundColor="#0066CC"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <View
+                        android:id="@+id/profile_bg"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/circle_image"
+                        android:backgroundTint="#33FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_doctor"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_doctor"
+                        app:layout_constraintBottom_toBottomOf="@id/profile_bg"
+                        app:layout_constraintEnd_toEndOf="@id/profile_bg"
+                        app:layout_constraintStart_toStartOf="@id/profile_bg"
+                        app:layout_constraintTop_toTopOf="@id/profile_bg"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/tv_doctor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Dr. Sarah\nJohnson"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/profile_bg"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_specialist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Urology Specialist • MD-88293"
+                        android:textColor="#E0F2FE"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_doctor_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_doctor_name" />
+
+                    <View
+                        android:id="@+id/task_badge"
+                        android:layout_width="80dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/rounded_white_bg"
+                        android:backgroundTint="#33FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:gravity="center"
+                        android:text="8 tasks\ntoday"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@id/task_badge"
+                        app:layout_constraintEnd_toEndOf="@id/task_badge"
+                        app:layout_constraintStart_toStartOf="@id/task_badge"
+                        app:layout_constraintTop_toTopOf="@id/task_badge" />
 
-                    <ImageView
-                        android:id="@+id/notification_icon"
-                        android:layout_width="wrap_content"
+                    <!-- Action Chips -->
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/flex_chips"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_notifications" />
+                        android:layout_marginTop="20dp"
+                        app:flexWrap="wrap"
+                        app:layout_constraintTop_toBottomOf="@id/tv_specialist">
 
-                    <ImageView
-                        android:id="@+id/search_top_icon"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#33FFFFFF"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="Full Access"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#33FFFFFF"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="Prescribe"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#33FFFFFF"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="Diagnose"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#33FFFFFF"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="Manage Team"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                    <!-- Inner Quick Action Cards -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="16dp"
-                        android:layout_toStartOf="@id/notification_icon"
-                        android:src="@drawable/ic_search"
-                        android:clickable="true"
-                        android:focusable="true" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/flex_chips">
 
-                </RelativeLayout>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/new_scan_card"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#33FFFFFF"
+                            app:cardCornerRadius="16dp"
+                            app:strokeWidth="0dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_add_circle"
+                                    app:tint="#FFFFFF" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="New Scan"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Start analysis"
+                                    android:textColor="#E0F2FE"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/view_reports_card"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#33FFFFFF"
+                            app:cardCornerRadius="16dp"
+                            app:strokeWidth="0dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/ic_description"
+                                    app:tint="#FFFFFF" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="View Reports"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Recent results"
+                                    android:textColor="#E0F2FE"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Team Overview Header -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardBackgroundColor="#1976D2"
-                    app:cardCornerRadius="16dp">
+                    android:text="Team Overview"
+                    android:textColor="#111827"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textColor="#0066CC"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Team Grid -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <!-- Doctors Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#EFF6FF"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#DBEAFE"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,297 +354,202 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#FFFFFF"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_doctor"
+                            app:tint="#2563EB" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dr. Sarah Johnson"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
+                            android:layout_marginTop="12dp"
+                            android:text="12"
+                            android:textColor="#111827"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Urology Specialist - MD-88293"
-                            android:textColor="#BBDEFB" />
+                            android:text="Doctors"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp">
-
-                            <Button
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Full Access"
-                                android:textColor="#BBDEFB" />
-
-                            <Button
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Prescribe"
-                                android:textColor="#BBDEFB" />
-
-                            <Button
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Diagnose"
-                                android:textColor="#BBDEFB" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <GridLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:columnCount="2">
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/new_scan_card"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_columnWeight="1"
-                                    android:layout_marginEnd="8dp"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    app:cardBackgroundColor="#1565C0">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:drawableTop="@drawable/ic_add_circle"
-                                        android:gravity="center"
-                                        android:padding="16dp"
-                                        android:text="New Scan"
-                                        android:textColor="@android:color/white" />
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:id="@+id/view_reports_card"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_columnWeight="1"
-                                    android:layout_marginStart="8dp"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    app:cardBackgroundColor="#1565C0">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:drawableTop="@drawable/ic_description"
-                                        android:gravity="center"
-                                        android:padding="16dp"
-                                        android:text="View Reports"
-                                        android:textColor="@android:color/white" />
-                                </androidx.cardview.widget.CardView>
-                            </GridLayout>
-                        </LinearLayout>
+                            android:layout_marginTop="4dp"
+                            android:text="8 active"
+                            android:textColor="#60A5FA"
+                            android:textSize="12sp" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            <!-- Team Overview Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Team Overview"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="View All"
-                        android:textColor="#0D47A1" />
-                </RelativeLayout>
-
-                <GridLayout
-                    android:layout_width="match_parent"
+                <!-- Nurses Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:columnCount="2">
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#FAF5FF"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#F3E8FF"
+                    app:strokeWidth="1dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="16dp"
-                        app:cardCornerRadius="16dp">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#FFFFFF"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_sign_up_person"
+                            app:tint="#9333EA" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:layout_marginTop="12dp"
+                            android:text="24"
+                            android:textColor="#111827"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_doctor_dashboard" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nurses"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="12"
-                                android:textColor="@android:color/black"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="18 active"
+                            android:textColor="#C084FC"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Doctors" />
+                <!-- Technicians Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#F0FDF4"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#DCFCE7"
+                    app:strokeWidth="1dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="8 active"
-                                android:textColor="@android:color/holo_green_dark" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="16dp"
-                        app:cardCornerRadius="16dp">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#FFFFFF"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_bolt"
+                            app:tint="#16A34A" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:layout_marginTop="12dp"
+                            android:text="8"
+                            android:textColor="#111827"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_nurse_dashboard" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Technicians"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="24"
-                                android:textColor="@android:color/black"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="6 active"
+                            android:textColor="#4ADE80"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Nurses" />
+                <!-- Patients Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#FFF7ED"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#FFEDD5"
+                    app:strokeWidth="1dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="16 active"
-                                android:textColor="@android:color/holo_green_dark" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="16dp">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/rounded_white_bg"
+                            android:backgroundTint="#FFFFFF"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_patients"
+                            app:tint="#EA580C" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:layout_marginTop="12dp"
+                            android:text="1248"
+                            android:textColor="#111827"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_technician_dashboard" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="8"
-                                android:textColor="@android:color/black"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Technicians" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="8 active"
-                                android:textColor="@android:color/holo_green_dark" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_marginStart="8dp"
-                        app:cardCornerRadius="16dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:text="Patients"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_patient_dashboard" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="89 active"
+                            android:textColor="#FB923C"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1248"
-                                android:textColor="@android:color/black"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Patients" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="89 active"
-                                android:textColor="@android:color/holo_green_dark" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </GridLayout>
-            </LinearLayout>
-
+            </GridLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -369,11 +557,8 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemTextColor="@color/bottom_nav_item_color"
-        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

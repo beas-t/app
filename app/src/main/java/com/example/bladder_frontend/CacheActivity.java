@@ -7,14 +7,16 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 
-public class Student_logActivity extends AppCompatActivity {
+public class CacheActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_log);
+        setContentView(R.layout.activity_cache);
 
         ImageView btnBack = findViewById(R.id.btn_back);
+        MaterialButton btnClearCache = findViewById(R.id.btn_clear_cache);
+
         if (btnBack != null) {
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -24,14 +26,14 @@ public class Student_logActivity extends AppCompatActivity {
             });
         }
 
-        MaterialButton btnSendOtp = findViewById(R.id.btn_send_otp);
-        if (btnSendOtp != null) {
-            btnSendOtp.setOnClickListener(new View.OnClickListener() {
+        if (btnClearCache != null) {
+            btnClearCache.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Navigate to Home or next screen after "Login"
-                    Intent intent = new Intent(Student_logActivity.this, HomePageActivity.class);
+                    // Logic to clear cache would go here
+                    Intent intent = new Intent(CacheActivity.this, Cache_oneActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }

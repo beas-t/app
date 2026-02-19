@@ -72,6 +72,14 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(SettingsActivity.this, BackupActivity.class));
         });
 
+        binding.clearCacheCard.setOnClickListener(v -> {
+            startActivity(new Intent(SettingsActivity.this, CacheActivity.class));
+        });
+
+        binding.exportAllCard.setOnClickListener(v -> {
+            startActivity(new Intent(SettingsActivity.this, Report_twoActivity.class));
+        });
+
         // --- Features List (Includes) ---
         binding.btnAnalytics.getRoot().setOnClickListener(v -> {
             startActivity(new Intent(SettingsActivity.this, AnalyticsActivity.class));

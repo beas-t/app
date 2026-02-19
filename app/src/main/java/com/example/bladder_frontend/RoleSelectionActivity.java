@@ -15,21 +15,11 @@ public class RoleSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_role_selection);
 
         CardView doctorCard = findViewById(R.id.doctorCard);
-        CardView patientCard = findViewById(R.id.patientCard);
 
         doctorCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RoleSelectionActivity.this, DoctorLoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        patientCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to Student Portal
-                Intent intent = new Intent(RoleSelectionActivity.this, Student_portalActivity.class);
                 startActivity(intent);
             }
         });

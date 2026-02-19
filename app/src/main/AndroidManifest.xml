@@ -73,7 +73,10 @@
         <activity android:name=".PatientActivity" android:exported="false" />
         <activity android:name=".Patient_oneActivity" android:exported="false" />
         <activity android:name=".Patient_twoActivity" android:exported="false" />
+        <activity android:name=".Patient_threeActivity" android:exported="false" />
         <activity android:name=".SearchActivity" android:exported="false" />
+        <activity android:name=".CacheActivity" android:exported="false" />
+        <activity android:name=".Cache_oneActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true" />
     </application>
 

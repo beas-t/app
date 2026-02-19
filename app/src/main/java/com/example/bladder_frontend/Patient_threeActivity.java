@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -61,6 +62,9 @@ public class Patient_threeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     // Save logic would go here
+                    Toast.makeText(Patient_threeActivity.this, "Changes Saved Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Patient_threeActivity.this, Patient_oneActivity.class);
+                    startActivity(intent);
                     finish();
                 }
             });
