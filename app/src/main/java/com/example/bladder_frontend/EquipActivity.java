@@ -18,20 +18,6 @@ public class EquipActivity extends AppCompatActivity {
             btnBack.setOnClickListener(v -> finish());
         }
 
-        ImageView searchIcon = findViewById(R.id.search_icon);
-        if (searchIcon != null) {
-            searchIcon.setOnClickListener(v -> {
-                startActivity(new Intent(EquipActivity.this, SearchActivity.class));
-            });
-        }
-
-        View notificationContainer = findViewById(R.id.notification_container);
-        if (notificationContainer != null) {
-            notificationContainer.setOnClickListener(v -> {
-                startActivity(new Intent(EquipActivity.this, Notification_oneActivity.class));
-            });
-        }
-
         MaterialButton btnRecalibrate = findViewById(R.id.btn_recalibrate);
         if (btnRecalibrate != null) {
             btnRecalibrate.setOnClickListener(v -> {

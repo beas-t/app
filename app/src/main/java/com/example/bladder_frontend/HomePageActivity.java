@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -17,7 +21,23 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Make the app full screen and handle status/navigation bars properly
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        
         setContentView(R.layout.activity_home_page);
+
+        // Adjust for system bars (Status Bar and Navigation Bar) using WindowInsets
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, windowInsets) -> {
+            int top = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
+            int bottom = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+            
+            // Apply padding to the root layout or specific views to avoid overlap
+            findViewById(R.id.toolbar).setPadding(0, top, 0, 0);
+            findViewById(R.id.bottom_navigation).setPadding(0, 0, 0, bottom);
+            
+            return windowInsets;
+        });
 
         // Search navigation
         ImageView searchIcon = findViewById(R.id.search_top_icon);

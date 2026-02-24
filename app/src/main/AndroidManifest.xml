@@ -77,6 +77,14 @@
         <activity android:name=".SearchActivity" android:exported="false" />
         <activity android:name=".CacheActivity" android:exported="false" />
         <activity android:name=".Cache_oneActivity" android:exported="false" />
+        <activity android:name=".ExpActivity" android:exported="false" />
+        <activity android:name=".Exp_oneActivity" android:exported="false" />
+        <activity android:name=".Exp_twoActivity" android:exported="false" />
+        <activity android:name=".DrawActivity" android:exported="false" />
+        <activity android:name=".ForgotActivity" android:exported="false" />
+        <activity android:name=".Forgot_oneActivity" android:exported="false" />
+        <activity android:name=".Forgot_twoActivity" android:exported="false" />
+        <activity android:name=".Forgot_threeActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true" />
     </application>
 

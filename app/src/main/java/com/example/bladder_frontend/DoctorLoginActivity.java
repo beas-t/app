@@ -43,7 +43,8 @@ public class DoctorLoginActivity extends AppCompatActivity {
         forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle forgot password click
+                Intent intent = new Intent(DoctorLoginActivity.this, ForgotActivity.class);
+                startActivity(intent);
             }
         });
 

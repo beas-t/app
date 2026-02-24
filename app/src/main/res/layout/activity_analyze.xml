@@ -39,25 +39,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/notification_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_notifications"
-                app:tint="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/search_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:layout_toStartOf="@+id/notification_icon"
-                android:src="@drawable/ic_search"
-                app:tint="#FFFFFF" />
-
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -78,7 +59,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
+        <ImageView
+            android:id="@+id/iv_captured_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
         <LinearLayout
+            android:id="@+id/placeholder_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -122,11 +111,16 @@
         app:layout_constraintBottom_toTopOf="@+id/status_card">
 
         <LinearLayout
+            android:id="@+id/btn_draw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -142,11 +136,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_measure"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -162,11 +161,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_filter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -182,11 +186,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_retake"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"

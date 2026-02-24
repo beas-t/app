@@ -28,25 +28,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/notification_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_notifications"
-                app:tint="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/search_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:layout_toStartOf="@+id/notification_icon"
-                android:src="@drawable/ic_search"
-                app:tint="#FFFFFF" />
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -176,6 +157,7 @@
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="#F3F4F6"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
