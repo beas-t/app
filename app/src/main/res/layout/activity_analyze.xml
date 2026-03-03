@@ -20,7 +20,7 @@
             android:layout_marginEnd="16dp">
 
             <ImageView
-                android:id="@+id/btn_back"
+                android:id="@+id/btn_back_toolbar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/btn_back"
+                android:layout_toEndOf="@id/btn_back_toolbar"
                 android:text="Verify Image"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <ImageView
+        <com.example.bladder_frontend.DrawingView
             android:id="@+id/iv_captured_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -111,85 +111,9 @@
         app:layout_constraintBottom_toTopOf="@+id/status_card">
 
         <LinearLayout
-            android:id="@+id/btn_draw"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_description"
-                app:tint="#4B5563" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Draw"
-                android:textColor="#4B5563"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_measure"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_auto_measure"
-                app:tint="#4B5563" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Measure"
-                android:textColor="#4B5563"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_filter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp">
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_settings"
-                app:tint="#4B5563" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Filter"
-                android:textColor="#4B5563"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/btn_retake"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"

@@ -45,7 +45,6 @@ public class ScanActivity extends AppCompatActivity {
         }
 
         CardView aiAutoMeasureCard = findViewById(R.id.ai_auto_measure_card);
-        CardView manualModeCard = findViewById(R.id.manual_mode_card);
 
         View.OnClickListener captureNavigationListener = new View.OnClickListener() {
             @Override
@@ -57,6 +56,5 @@ public class ScanActivity extends AppCompatActivity {
         };
 
         if (aiAutoMeasureCard != null) aiAutoMeasureCard.setOnClickListener(captureNavigationListener);
-        if (manualModeCard != null) manualModeCard.setOnClickListener(captureNavigationListener);
     }
 }

@@ -26,6 +26,9 @@
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow_back"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 app:tint="#111827" />
 
             <TextView
@@ -278,54 +281,6 @@
                     </LinearLayout>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- External Links -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:background="#F9FAFB"
-                    android:paddingHorizontal="16dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Privacy Policy" android:textColor="#4B5563" android:textSize="15sp" />
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_share" app:tint="#9CA3AF" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#F9FAFB"
-                    android:paddingHorizontal="16dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Terms of Service" android:textColor="#4B5563" android:textSize="15sp" />
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_share" app:tint="#9CA3AF" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#F9FAFB"
-                    android:paddingHorizontal="16dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Licenses" android:textColor="#4B5563" android:textSize="15sp" />
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_share" app:tint="#9CA3AF" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_marginTop="8dp"
-                    android:background="#F9FAFB"
-                    android:paddingHorizontal="16dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:text="Visit Website" android:textColor="#4B5563" android:textSize="15sp" />
-                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_share" app:tint="#9CA3AF" />
-                </RelativeLayout>
-
-            </LinearLayout>
 
             <!-- Footer -->
             <View

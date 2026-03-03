@@ -39,6 +39,7 @@ public class CaptureActivity extends AppCompatActivity {
         MaterialButtonToggleGroup toggleGroup = findViewById(R.id.toggleGroup);
         ImageView btnCapture = findViewById(R.id.btnCapture);
         LinearLayout btnGallery = findViewById(R.id.btn_gallery);
+        LinearLayout btnSettings = findViewById(R.id.btn_settings);
 
         // Register gallery launcher
         galleryLauncher = registerForActivityResult(
@@ -74,6 +75,16 @@ public class CaptureActivity extends AppCompatActivity {
                     boolean isSagittal = toggleGroup.getCheckedButtonId() == R.id.btnSagittal;
                     Intent intent = new Intent(CaptureActivity.this, AnalyzeActivity.class);
                     intent.putExtra("VIEW_TYPE", isSagittal ? "sagittal" : "transverse");
+                    startActivity(intent);
+                }
+            });
+        }
+
+        if (btnSettings != null) {
+            btnSettings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CaptureActivity.this, SettingsActivity.class);
                     startActivity(intent);
                 }
             });

@@ -73,20 +73,5 @@ public class Report_oneActivity extends AppCompatActivity {
                 }
             });
         }
-
-        LinearLayout btnPrint = findViewById(R.id.btn_print);
-        if (btnPrint != null) {
-            btnPrint.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent printIntent = new Intent(Report_oneActivity.this, Report_threeActivity.class);
-                    printIntent.putExtra("patient_name", patientName);
-                    printIntent.putExtra("report_id", reportId);
-                    printIntent.putExtra("scan_date", scanDate);
-                    printIntent.putExtra("volume", volume);
-                    startActivity(printIntent);
-                }
-            });
-        }
     }
 }

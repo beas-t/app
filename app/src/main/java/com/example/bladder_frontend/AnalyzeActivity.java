@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class AnalyzeActivity extends AppCompatActivity {
+
+    private DrawingView drawingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,69 +22,48 @@ public class AnalyzeActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        
+        ImageView btnBackToolbar = findViewById(R.id.btn_back_toolbar);
+        if (btnBackToolbar != null) {
+            btnBackToolbar.setOnClickListener(v -> onBackPressed());
         }
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
 
         final String viewType = getIntent().getStringExtra("VIEW_TYPE");
         final String imageUriString = getIntent().getStringExtra("IMAGE_URI");
 
-        ImageView ivCapturedImage = findViewById(R.id.iv_captured_image);
+        drawingView = findViewById(R.id.iv_captured_image);
         LinearLayout placeholderLayout = findViewById(R.id.placeholder_layout);
 
         if (imageUriString != null) {
             Uri imageUri = Uri.parse(imageUriString);
-            if (ivCapturedImage != null && placeholderLayout != null) {
-                ivCapturedImage.setImageURI(imageUri);
-                ivCapturedImage.setVisibility(View.VISIBLE);
+            if (drawingView != null && placeholderLayout != null) {
+                drawingView.setImageURI(imageUri);
+                drawingView.setVisibility(View.VISIBLE);
                 placeholderLayout.setVisibility(View.GONE);
             }
         }
 
-        // Action Buttons
-        LinearLayout btnDraw = findViewById(R.id.btn_draw);
-        LinearLayout btnMeasure = findViewById(R.id.btn_measure);
-        LinearLayout btnFilter = findViewById(R.id.btn_filter);
+        // Only Retake button remains
         LinearLayout btnRetake = findViewById(R.id.btn_retake);
-
-        if (btnDraw != null) {
-            btnDraw.setOnClickListener(v -> {
-                Intent intent = new Intent(AnalyzeActivity.this, DrawActivity.class);
-                intent.putExtra("IMAGE_URI", imageUriString);
-                startActivity(intent);
-            });
-        }
-
-        if (btnMeasure != null) {
-            btnMeasure.setOnClickListener(v -> Toast.makeText(this, "Manual Measurement Enabled", Toast.LENGTH_SHORT).show());
-        }
-
-        if (btnFilter != null) {
-            btnFilter.setOnClickListener(v -> Toast.makeText(this, "Image Filters Applied", Toast.LENGTH_SHORT).show());
-        }
-
         if (btnRetake != null) {
             btnRetake.setOnClickListener(v -> {
-                // Return to Capture screen
-                Intent intent = new Intent(AnalyzeActivity.this, CaptureActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle("Discard Scan?")
+                        .setMessage("Are you sure you want to discard this image?")
+                        .setPositiveButton("Retake", (dialog, which) -> {
+                            Intent intent = new Intent(AnalyzeActivity.this, CaptureActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
+                            finish();
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
             });
         }
 
         MaterialButton btnAnalyzeImage = findViewById(R.id.btnAnalyzeImage);
         if (btnAnalyzeImage != null) {
             btnAnalyzeImage.setOnClickListener(v -> {
-                // Navigate to ProcessingActivity and pass the view type
                 Intent intent = new Intent(AnalyzeActivity.this, ProcessingActivity.class);
                 intent.putExtra("VIEW_TYPE", viewType);
                 startActivity(intent);

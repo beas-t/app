@@ -40,25 +40,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/notification_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_notifications"
-                app:tint="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/search_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:layout_toStartOf="@+id/notification_icon"
-                android:src="@drawable/ic_search"
-                app:tint="#FFFFFF" />
-
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -280,51 +261,16 @@
 
                 <LinearLayout
                     android:id="@+id/btn_export"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:background="@drawable/rounded_white_bg"
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
-                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_manual_mode" app:tint="#4B5563" />
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_export_arrow" app:tint="#4B5563" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Export" android:textColor="#4B5563" android:textSize="14sp" />
-                </LinearLayout>
-
-                <View android:layout_width="12dp" android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:id="@+id/btn_share"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_white_bg"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_share" app:tint="#4B5563" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Share" android:textColor="#4B5563" android:textSize="14sp" />
-                </LinearLayout>
-
-                <View android:layout_width="12dp" android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:id="@+id/btn_print"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_white_bg"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_display" app:tint="#4B5563" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Print" android:textColor="#4B5563" android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>
