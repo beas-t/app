@@ -4,28 +4,57 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bladder_frontend.api.BladSenseApi;
+import com.example.bladder_frontend.api.RetrofitClient;
+import com.example.bladder_frontend.api.models.Patient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PatientActivity extends AppCompatActivity {
+
+    private RecyclerView rvPatients;
+    private PatientAdapter adapter;
+    private List<Patient> patientList = new ArrayList<>();
+    private TextView tvPatientCount;
+    private EditText etSearch;
+    private boolean showingArchived = false;
+    private com.google.android.material.button.MaterialButton btnToggleArchived;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
 
-        // Navigation to SearchActivity
-        ImageView searchIcon = findViewById(R.id.search_top_icon);
-        if (searchIcon != null) {
-            searchIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(PatientActivity.this, SearchActivity.class));
-                }
+        tvPatientCount = findViewById(R.id.tv_patient_count);
+        etSearch = findViewById(R.id.et_search);
+        rvPatients = findViewById(R.id.rv_patients);
+        rvPatients.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new PatientAdapter(patientList, this);
+        rvPatients.setAdapter(adapter);
+
+        btnToggleArchived = findViewById(R.id.btn_toggle_archived);
+        if (btnToggleArchived != null) {
+            btnToggleArchived.setOnClickListener(v -> {
+                showingArchived = !showingArchived;
+                btnToggleArchived.setText(showingArchived ? "Show Active" : "Show Archived");
+                tvPatientCount.setText(showingArchived ? "Archived Patients" : "All Patients");
+                fetchPatients();
             });
         }
 
@@ -47,74 +76,41 @@ public class PatientActivity extends AppCompatActivity {
             btnFilter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PatientActivity.this, Report_sevenActivity.class);
+                    // Assuming this was meant to go to Patient_threeActivity based on the broken code
+                    Intent intent = new Intent(PatientActivity.this, Patient_threeActivity.class);
                     startActivity(intent);
                 }
             });
         }
 
-        findViewById(R.id.card_james_wilson).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientActivity.this, Patient_oneActivity.class);
-                intent.putExtra("patient_name", "James Wilson");
-                intent.putExtra("patient_id", "PT-8823");
-                intent.putExtra("patient_age", "45");
-                intent.putExtra("patient_gender", "Male");
-                intent.putExtra("patient_scans", "4");
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.card_sarah_connor).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientActivity.this, Patient_oneActivity.class);
-                intent.putExtra("patient_name", "Sarah Connor");
-                intent.putExtra("patient_id", "PT-8824");
-                intent.putExtra("patient_age", "32");
-                intent.putExtra("patient_gender", "Female");
-                intent.putExtra("patient_scans", "2");
-                startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.card_robert_smith).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientActivity.this, Patient_oneActivity.class);
-                intent.putExtra("patient_name", "Robert Smith");
-                intent.putExtra("patient_id", "PT-8825");
-                intent.putExtra("patient_age", "68");
-                intent.putExtra("patient_gender", "Male");
-                intent.putExtra("patient_scans", "12");
-                startActivity(intent);
-            }
-        });
-
+        // Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         if (bottomNavigationView != null) {
             bottomNavigationView.setSelectedItemId(R.id.navigation_patients);
-            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     int id = item.getItemId();
-                    if (id == R.id.navigation_scan) {
-                        startActivity(new Intent(PatientActivity.this, ScanActivity.class));
+                    if (id == R.id.navigation_home) {
+                        startActivity(new Intent(PatientActivity.this, HomePageActivity.class));
+                        overridePendingTransition(0, 0);
                         finish();
                         return true;
-                    } else if (id == R.id.navigation_reports) {
-                        startActivity(new Intent(PatientActivity.this, ReportActivity.class));
+                    } else if (id == R.id.navigation_scan) {
+                        startActivity(new Intent(PatientActivity.this, ScanActivity.class));
+                        overridePendingTransition(0, 0);
                         finish();
                         return true;
                     } else if (id == R.id.navigation_patients) {
                         return true;
-                    } else if (id == R.id.navigation_settings) {
-                        startActivity(new Intent(PatientActivity.this, SettingsActivity.class));
+                    } else if (id == R.id.navigation_reports) {
+                        startActivity(new Intent(PatientActivity.this, ReportActivity.class));
+                        overridePendingTransition(0, 0);
                         finish();
                         return true;
-                    } else if (id == R.id.navigation_home) {
-                        startActivity(new Intent(PatientActivity.this, HomePageActivity.class));
+                    } else if (id == R.id.navigation_settings) {
+                        startActivity(new Intent(PatientActivity.this, SettingsActivity.class));
+                        overridePendingTransition(0, 0);
                         finish();
                         return true;
                     }
@@ -122,5 +118,34 @@ public class PatientActivity extends AppCompatActivity {
                 }
             });
         }
+
+        fetchPatients();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchPatients();
+    }
+
+    private void fetchPatients() {
+        BladSenseApi api = RetrofitClient.getApi(this);
+        api.getPatients(null, showingArchived).enqueue(new Callback<List<Patient>>() {
+            @Override
+            public void onResponse(Call<List<Patient>> call, Response<List<Patient>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    patientList = response.body();
+                    adapter.updateData(patientList);
+                    if (tvPatientCount != null) {
+                        tvPatientCount.setText("All Patients (" + patientList.size() + ")");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Patient>> call, Throwable t) {
+                // Silently fail
+            }
+        });
     }
 }

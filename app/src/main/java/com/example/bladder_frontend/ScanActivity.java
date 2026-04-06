@@ -51,6 +51,7 @@ public class ScanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Navigate to CaptureActivity
                 Intent intent = new Intent(ScanActivity.this, CaptureActivity.class);
+                intent.putExtra("patient", getIntent().getSerializableExtra("patient"));
                 startActivity(intent);
             }
         };

@@ -119,10 +119,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_preview_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="James Wilson • Mar 10, 2024"
+                        android:text="Patient Name • Date"
                         android:textColor="#6B7280"
                         android:textSize="14sp" />
 

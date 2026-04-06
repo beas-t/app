@@ -34,7 +34,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/btn_back"
-                android:text="Notifications"
+                android:text="@string/title_notifications"
                 android:textColor="#111827"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ALERT TYPES"
+                        android:text="@string/header_alert_types"
                         android:textColor="#111827"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -94,8 +94,8 @@
                             android:layout_toEndOf="@id/icon_critical"
                             android:layout_toStartOf="@+id/switch_critical"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Critical Alerts" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Immediate notifications for urgent patient status" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_critical_alerts" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_critical_alerts" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_critical"
@@ -125,8 +125,8 @@
                             android:layout_toEndOf="@id/icon_patient"
                             android:layout_toStartOf="@+id/switch_patient"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient Updates" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Changes to patient records and vitals" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_patient_updates" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_patient_updates" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_patient"
@@ -156,8 +156,8 @@
                             android:layout_toEndOf="@id/icon_report"
                             android:layout_toStartOf="@+id/switch_report"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Report Ready" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Notification when analysis completes" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_report_ready" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_report_ready" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_report"
@@ -187,8 +187,8 @@
                             android:layout_toEndOf="@id/icon_system"
                             android:layout_toStartOf="@+id/switch_system"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="System Updates" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="App updates and maintenance" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_system_updates" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_system_updates" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_system"
@@ -218,8 +218,8 @@
                             android:layout_toEndOf="@id/icon_marketing"
                             android:layout_toStartOf="@+id/switch_marketing"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Marketing &amp; Tips" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Product news and usage tips" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_marketing_tips" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_marketing_tips" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_marketing"
@@ -254,7 +254,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SCHEDULE &amp; SOUND"
+                        android:text="@string/header_schedule_sound"
                         android:textColor="#111827"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -277,8 +277,8 @@
                             android:layout_toEndOf="@id/icon_quiet"
                             android:layout_toStartOf="@+id/switch_quiet"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Quiet Hours" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Mute notifications 10 PM - 7 AM" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_quiet_hours" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/desc_quiet_hours" android:textColor="#6B7280" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_quiet"
@@ -294,19 +294,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="Notification Sound"
+                        android:text="@string/label_notif_sound"
                         android:textColor="#111827"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <!-- Sound Spinner/Dropdown -->
                     <RelativeLayout
+                        android:id="@+id/btn_sound_selector"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/rounded_white_bg"
                         android:backgroundTint="#F9FAFB"
-                        android:padding="12dp">
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <ImageView
                             android:id="@+id/icon_sound"
@@ -317,12 +320,13 @@
                             app:tint="#6B7280" />
 
                         <TextView
+                            android:id="@+id/tv_selected_sound"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/icon_sound"
-                            android:text="Urgent"
+                            android:text="@string/sound_urgent"
                             android:textColor="#111827"
                             android:textSize="16sp" />
 
@@ -334,6 +338,20 @@
                             android:src="@drawable/ic_chevron_down"
                             app:tint="#111827" />
                     </RelativeLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_test_notif"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/btn_test_notification"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#0066CC"
+                        app:cornerRadius="12dp"
+                        app:elevation="0dp"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

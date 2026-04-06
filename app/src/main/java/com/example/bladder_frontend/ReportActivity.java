@@ -8,55 +8,52 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bladder_frontend.api.BladSenseApi;
+import com.example.bladder_frontend.api.RetrofitClient;
+import com.example.bladder_frontend.api.models.ScanReport;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ReportActivity extends AppCompatActivity {
+
+    private RecyclerView rvReports;
+    private ReportAdapter adapter;
+    private List<ScanReport> reportList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        // RecyclerView Setup
+        rvReports = findViewById(R.id.rv_reports);
+        rvReports.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ReportAdapter(reportList, this);
+        rvReports.setAdapter(adapter);
+
+        // Fetch Data from API
+        fetchReports();
+
         // Search navigation
-        ImageView searchIcon = findViewById(R.id.search_icon);
+        ImageView searchIcon = findViewById(R.id.ic_search_small);
         if (searchIcon != null) {
             searchIcon.setOnClickListener(v -> {
                 startActivity(new Intent(ReportActivity.this, SearchActivity.class));
             });
         }
 
-        // Navigation to detailed reports with dynamic data passing
-        setupReportNavigation(R.id.btn_report_james, "James Wilson", "R-1023", "Mar 10, 2024", "450 ml", "Normal");
-        setupReportNavigation(R.id.btn_report_sarah, "Sarah Connor", "R-1022", "Mar 09, 2024", "620 ml", "Distended");
-        setupReportNavigation(R.id.btn_report_robert, "Robert Smith", "R-1021", "Mar 08, 2024", "210 ml", "Normal");
-        setupReportNavigation(R.id.btn_report_emily, "Emily Davis", "R-1020", "Mar 07, 2024", "150 ml", "Normal");
 
-        // Navigation to Volume Trends (Report_fourActivity)
-        MaterialButton btnTrends = findViewById(R.id.btn_trends);
-        if (btnTrends != null) {
-            btnTrends.setOnClickListener(v -> {
-                startActivity(new Intent(ReportActivity.this, Report_fourActivity.class));
-            });
-        }
-
-        // Navigation to Compare Reports (Report_fiveActivity)
-        MaterialButton btnCompare = findViewById(R.id.btn_compare);
-        if (btnCompare != null) {
-            btnCompare.setOnClickListener(v -> {
-                startActivity(new Intent(ReportActivity.this, Report_fiveActivity.class));
-            });
-        }
-
-        // Navigation to Filter Reports (Report_sevenActivity)
-        MaterialCardView btnFilter = findViewById(R.id.btn_filter);
-        if (btnFilter != null) {
-            btnFilter.setOnClickListener(v -> {
-                startActivity(new Intent(ReportActivity.this, Report_sevenActivity.class));
-            });
-        }
 
         // Bottom Navigation Setup
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -95,18 +92,27 @@ public class ReportActivity extends AppCompatActivity {
         }
     }
 
-    private void setupReportNavigation(int cardId, String name, String id, String date, String volume, String status) {
-        MaterialCardView card = findViewById(cardId);
-        if (card != null) {
-            card.setOnClickListener(v -> {
-                Intent intent = new Intent(ReportActivity.this, Report_oneActivity.class);
-                intent.putExtra("patient_name", name);
-                intent.putExtra("report_id", id);
-                intent.putExtra("scan_date", date);
-                intent.putExtra("volume", volume);
-                intent.putExtra("status", status);
-                startActivity(intent);
-            });
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchReports();
+    }
+
+    private void fetchReports() {
+        BladSenseApi api = RetrofitClient.getApi(this);
+        api.getReports(null, null).enqueue(new Callback<List<ScanReport>>() {
+            @Override
+            public void onResponse(Call<List<ScanReport>> call, Response<List<ScanReport>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    reportList = response.body();
+                    adapter.updateData(reportList);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ScanReport>> call, Throwable t) {
+                // Silently fail for now or show Toast
+            }
+        });
     }
 }

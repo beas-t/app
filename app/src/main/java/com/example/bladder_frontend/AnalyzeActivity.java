@@ -8,17 +8,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.example.bladder_frontend.api.models.Patient;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class AnalyzeActivity extends AppCompatActivity {
 
     private DrawingView drawingView;
+    private Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analyze);
+
+        patient = (Patient) getIntent().getSerializableExtra("patient");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,12 +66,12 @@ public class AnalyzeActivity extends AppCompatActivity {
         }
 
         MaterialButton btnAnalyzeImage = findViewById(R.id.btnAnalyzeImage);
-        if (btnAnalyzeImage != null) {
             btnAnalyzeImage.setOnClickListener(v -> {
                 Intent intent = new Intent(AnalyzeActivity.this, ProcessingActivity.class);
                 intent.putExtra("VIEW_TYPE", viewType);
+                intent.putExtra("IMAGE_URI", imageUriString);
+                intent.putExtra("patient", patient);
                 startActivity(intent);
             });
-        }
     }
 }

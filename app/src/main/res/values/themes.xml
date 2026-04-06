@@ -1,13 +1,37 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Bladder_frontend" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
     <style name="Theme.Bladder_frontend" parent="Base.Theme.Bladder_frontend" />
 
+    <style name="Theme_Bladder_frontend_HighContrast" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFFF00</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:colorBackground">#000000</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFF00</item>
+        <item name="colorSurface">#000000</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="android:background">#000000</item>
+        <item name="android:editTextColor">#FFFFFF</item>
+        
+        <!-- Fix hardcoded background mapping -->
+        <item name="colorOutline">#FFFF00</item>
+        <item name="colorSurfaceVariant">#000000</item>
+    </style>
+
     <style name="CircleImage" parent="">
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>

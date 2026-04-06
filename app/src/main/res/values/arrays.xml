@@ -1,0 +1,10 @@
+<resources>
+    <string-array name="feedback_types">
+        <item>Bug Report</item>
+        <item>Feature Request</item>
+        <item>General Feedback</item>
+        <item>App Performance</item>
+        <item>Helpful Suggestion</item>
+        <item>Other</item>
+    </string-array>
+</resources>

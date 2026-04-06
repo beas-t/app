@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FAFB"
+    android:background="@color/background_color"
     tools:context=".Display_oneActivity">
 
     <!-- Toolbar -->
@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:background="@color/card_background"
         app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
@@ -26,7 +26,7 @@
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_arrow_back"
-                app:tint="#111827" />
+                app:tint="@color/text_color_primary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/btn_back"
                 android:text="Accessibility"
-                android:textColor="#111827"
+                android:textColor="@color/text_color_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -58,7 +58,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="1dp"
                 app:strokeWidth="0dp">
@@ -78,7 +78,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_speaker"
-                            app:tint="#6B7280" />
+                            app:tint="@color/gray_600" />
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -86,17 +86,15 @@
                             android:layout_toEndOf="@id/icon_voice"
                             android:layout_toStartOf="@+id/switch_voice"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Voice Guidance" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Speak screen content and actions" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Voice Guidance" android:textColor="@color/text_color_primary" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Speak screen content and actions" android:textColor="@color/text_color_secondary" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_voice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:checked="false"
-                            app:thumbTint="#D1D5DB"
-                            app:trackTint="#F3F4F6" />
+                            android:checked="false" />
                     </RelativeLayout>
 
                     <!-- Screen Reader Optimized -->
@@ -109,7 +107,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_device"
-                            app:tint="#6B7280" />
+                            app:tint="@color/gray_600" />
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -117,17 +115,15 @@
                             android:layout_toEndOf="@id/icon_reader"
                             android:layout_toStartOf="@+id/switch_reader"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Screen Reader Optimized" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Simplify layout for screen readers" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Screen Reader Optimized" android:textColor="@color/text_color_primary" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Simplify layout for screen readers" android:textColor="@color/text_color_secondary" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_reader"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:checked="false"
-                            app:thumbTint="#D1D5DB"
-                            app:trackTint="#F3F4F6" />
+                            android:checked="false" />
                     </RelativeLayout>
 
                     <!-- High Contrast -->
@@ -140,7 +136,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_visibility"
-                            app:tint="#6B7280" />
+                            app:tint="@color/gray_600" />
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -148,17 +144,15 @@
                             android:layout_toEndOf="@id/icon_contrast"
                             android:layout_toStartOf="@+id/switch_contrast"
                             android:orientation="vertical">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High Contrast" android:textColor="#111827" android:textSize="16sp" android:textStyle="bold" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Increase contrast for better visibility" android:textColor="#6B7280" android:textSize="13sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High Contrast" android:textColor="@color/text_color_primary" android:textSize="16sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Increase contrast for better visibility" android:textColor="@color/text_color_secondary" android:textSize="13sp" />
                         </LinearLayout>
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/switch_contrast"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:checked="false"
-                            app:thumbTint="#D1D5DB"
-                            app:trackTint="#F3F4F6" />
+                            android:checked="false" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -170,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="1dp"
                 app:strokeWidth="0dp">
@@ -185,7 +179,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Text &amp; Button Size"
-                        android:textColor="#111827"
+                        android:textColor="@color/text_color_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -194,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Button Size"
-                        android:textColor="#6B7280"
+                        android:textColor="@color/text_color_secondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -211,9 +205,9 @@
                             android:layout_weight="1"
                             android:text="Small"
                             android:textAllCaps="false"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_color_primary"
                             app:cornerRadius="8dp"
-                            app:strokeColor="#D1D5DB" />
+                            app:strokeColor="@color/gray_300" />
 
                         <View
                             android:layout_width="12dp"
@@ -227,9 +221,9 @@
                             android:layout_weight="1"
                             android:text="Medium"
                             android:textAllCaps="false"
-                            android:textColor="#0066CC"
+                            android:textColor="@color/colorPrimary"
                             app:cornerRadius="8dp"
-                            app:strokeColor="#0066CC" />
+                            app:strokeColor="@color/colorPrimary" />
 
                         <View
                             android:layout_width="12dp"
@@ -243,9 +237,9 @@
                             android:layout_weight="1"
                             android:text="Large"
                             android:textAllCaps="false"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_color_primary"
                             app:cornerRadius="8dp"
-                            app:strokeColor="#D1D5DB" />
+                            app:strokeColor="@color/gray_300" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -254,4 +248,4 @@
         </LinearLayout>
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

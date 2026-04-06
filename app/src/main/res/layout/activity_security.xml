@@ -101,7 +101,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="All security features are enabled"
+                            android:text="Account is protected by password"
                             android:textColor="#16A34A"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -177,134 +177,6 @@
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 2FA -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#E5E7EB"
-                app:strokeWidth="1dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/icon_2fa"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="#EFF6FF"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_device"
-                        app:tint="#3B82F6" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="12dp"
-                        android:layout_toEndOf="@id/icon_2fa"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Two-Factor Authentication"
-                            android:textColor="#111827"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add extra security layer"
-                            android:textColor="#6B7280"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/bg_tag_green"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="4dp"
-                        android:text="Enabled"
-                        android:textColor="#16A34A"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Biometric -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#E5E7EB"
-                app:strokeWidth="1dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/icon_biometric"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="#EFF6FF"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_notifications"
-                        app:tint="#3B82F6" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="12dp"
-                        android:layout_toEndOf="@id/icon_biometric"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Biometric Login"
-                            android:textColor="#111827"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Use fingerprint or face ID"
-                            android:textColor="#6B7280"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/rounded_white_bg"
-                        android:backgroundTint="#F3F4F6"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="4dp"
-                        android:text="Disabled"
-                        android:textColor="#6B7280"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -337,6 +209,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_current_device_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="iPhone 14 Pro"
@@ -352,6 +225,7 @@
                             android:textSize="13sp" />
 
                         <TextView
+                            android:id="@+id/tv_current_device_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"

@@ -138,7 +138,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="James Wilson"
+                            android:text="Patient Name"
                             android:textColor="#111827"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -147,7 +147,7 @@
                             android:id="@+id/tv_patient_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="PT-8823"
+                            android:text="---"
                             android:textColor="#6B7280"
                             android:textSize="16sp" />
 
@@ -179,7 +179,7 @@
                                     android:id="@+id/tv_patient_age"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="45"
+                                    android:text="--"
                                     android:textColor="#111827"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
@@ -304,37 +304,6 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btn_trends"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="4dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#E5E7EB"
-                    app:strokeWidth="1dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_analytics"
-                            app:tint="#6B7280" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Trends"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btn_export"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
@@ -366,6 +335,25 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_history_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Medical History"
+                android:textColor="#111827"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_patient_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="No history recorded."
+                android:textColor="#4B5563"
+                android:textSize="14sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -374,162 +362,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Timeline Section -->
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/timeline_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/timeline_item_3"
-                    android:layout_alignTop="@id/timeline_item_1"
-                    android:layout_marginStart="6dp"
-                    android:background="#E5E7EB" />
-
-                <!-- Timeline Item 1 -->
-                <LinearLayout
-                    android:id="@+id/timeline_item_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/circle_image"
-                        android:backgroundTint="#EF4444" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Today, 10:30 AM"
-                            android:textColor="#9CA3AF"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Bladder Scan - High Volume"
-                            android:textColor="#111827"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Measured 650ml. Catheterization recommended."
-                            android:textColor="#6B7280"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Timeline Item 2 -->
-                <LinearLayout
-                    android:id="@+id/timeline_item_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/timeline_item_1"
-                    android:layout_marginBottom="24dp"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/circle_image"
-                        android:backgroundTint="#3B82F6" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mar 08, 2024"
-                            android:textColor="#9CA3AF"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Routine Checkup"
-                            android:textColor="#111827"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Patient reported mild discomfort."
-                            android:textColor="#6B7280"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Timeline Item 3 -->
-                <LinearLayout
-                    android:id="@+id/timeline_item_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/timeline_item_2"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/circle_image"
-                        android:backgroundTint="#9CA3AF" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Feb 24, 2024"
-                            android:textColor="#9CA3AF"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Initial Assessment"
-                            android:textColor="#111827"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Admitted for observation."
-                            android:textColor="#6B7280"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" />
 
         </LinearLayout>
     </ScrollView>

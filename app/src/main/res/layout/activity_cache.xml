@@ -35,7 +35,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="24dp"
                 android:layout_toEndOf="@id/btn_back"
-                android:text="Clear Cache"
+                android:text="@string/title_clear_cache"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:text="Temporary Files"
+                        android:text="@string/label_temporary_files"
                         android:textColor="#111827"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -225,7 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:backgroundTint="#EF4444"
-            android:text="Clear Cache Now"
+            android:text="@string/btn_clear_cache_now"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="18sp"

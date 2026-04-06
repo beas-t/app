@@ -29,12 +29,13 @@
                 app:tint="#FFFFFF" />
 
             <TextView
+                android:id="@+id/tv_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/btn_back"
-                android:text="Module 1: Basics"
+                android:text="Module Detail"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -89,13 +90,28 @@
 
             <!-- Video Player Area -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/video_card"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 app:cardBackgroundColor="#111827"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
+                <VideoView
+                    android:id="@+id/video_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
+
+                <ProgressBar
+                    android:id="@+id/video_loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
                 <ImageView
+                    android:id="@+id/play_icon"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
@@ -104,20 +120,22 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/tv_module_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Probe Positioning"
+                android:text="Module Title"
                 android:textColor="#111827"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_module_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:lineSpacingExtra="4dp"
-                android:text="Learn the correct anatomical landmarks for optimal bladder visualization. This module covers the pubic symphysis and initial probe placement."
+                android:text="Module description goes here."
                 android:textColor="#4B5563"
                 android:textSize="16sp" />
 
@@ -208,7 +226,7 @@
         android:layout_height="56dp"
         android:layout_margin="16dp"
         android:backgroundTint="#0066CC"
-        android:text="Complete Module"
+        android:text="@string/btn_complete_module"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textStyle="bold"

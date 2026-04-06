@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
+import com.example.bladder_frontend.utils.StorageUtils;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 public class CacheActivity extends AppCompatActivity {
 
@@ -30,12 +34,32 @@ public class CacheActivity extends AppCompatActivity {
             btnClearCache.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Logic to clear cache would go here
-                    Intent intent = new Intent(CacheActivity.this, Cache_oneActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if (StorageUtils.clearCache(CacheActivity.this)) {
+                        Toast.makeText(CacheActivity.this, "Cache cleared successfully", Toast.LENGTH_SHORT).show();
+                        updateCacheUI();
+                    } else {
+                        Toast.makeText(CacheActivity.this, "Failed to clear cache", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
+        }
+        
+        updateCacheUI();
+    }
+
+    private void updateCacheUI() {
+        TextView tvCacheSize = findViewById(R.id.tv_cache_size);
+        LinearProgressIndicator progressCache = findViewById(R.id.progress_cache);
+        
+        long cacheSize = StorageUtils.getCacheSize(this);
+        if (tvCacheSize != null) {
+            tvCacheSize.setText("Current size: " + StorageUtils.formatSize(cacheSize));
+        }
+        
+        if (progressCache != null) {
+            // Set arbitrary max or base on some logic, here just showing it works
+            int progress = (int) (Math.min(cacheSize / (1024 * 1024), 100)); // 1MB = 1% for demo
+            progressCache.setProgress(progress);
         }
     }
 }

@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Shield Background -->
+    <path
+        android:pathData="M60,10 C40,10 25,18 20,35 C20,70 35,95 60,110 C85,95 100,70 100,35 C95,18 80,10 60,10 Z"
+        android:fillColor="#E3F2FD"
+        android:strokeColor="#0D47A1"
+        android:strokeWidth="2"/>
+    <!-- Shield Border Glow -->
+    <path
+        android:pathData="M60,15 C45,15 30,22 25,38 C25,65 38,88 60,102 C82,88 95,65 95,38 C90,22 75,15 60,15 Z"
+        android:strokeColor="#B0BEC5"
+        android:strokeWidth="0.5"
+        android:fillColor="#00000000"/>
+    <!-- Pulse Line -->
+    <path
+        android:pathData="M35,65 L50,65 L55,45 L65,85 L70,65 L85,65"
+        android:strokeColor="#0D47A1"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"/>
+    <!-- Dot at the top -->
+    <path
+        android:pathData="M60,25 m-3,0 a3,3 0 1,1 6,0 a3,3 0 1,1 -6,0"
+        android:fillColor="#333333"/>
+</vector>

@@ -34,7 +34,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/btn_back"
-                android:text="Training Center"
+                android:text="@string/title_training"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -105,7 +105,7 @@
                         android:id="@+id/tvProgressTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your Progress"
+                        android:text="@string/label_your_progress"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -136,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
-                        android:text="Course Completion"
+                        android:text="@string/label_course_completion"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +154,7 @@
                         app:layout_constraintEnd_toEndOf="parent" />
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_completion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -171,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Learning Modules"
+                android:text="@string/label_learning_modules"
                 android:textColor="#111827"
                 android:textSize="20sp"
                 android:textStyle="bold" />

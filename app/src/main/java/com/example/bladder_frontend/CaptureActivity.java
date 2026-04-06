@@ -11,16 +11,20 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.example.bladder_frontend.api.models.Patient;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 public class CaptureActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> galleryLauncher;
+    private Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture);
+        
+        patient = (Patient) getIntent().getSerializableExtra("patient");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,6 +56,7 @@ public class CaptureActivity extends AppCompatActivity {
                             Intent intent = new Intent(CaptureActivity.this, AnalyzeActivity.class);
                             intent.putExtra("VIEW_TYPE", isSagittal ? "sagittal" : "transverse");
                             intent.putExtra("IMAGE_URI", selectedImageUri.toString());
+                            intent.putExtra("patient", patient);
                             startActivity(intent);
                         }
                     }
@@ -75,6 +80,7 @@ public class CaptureActivity extends AppCompatActivity {
                     boolean isSagittal = toggleGroup.getCheckedButtonId() == R.id.btnSagittal;
                     Intent intent = new Intent(CaptureActivity.this, AnalyzeActivity.class);
                     intent.putExtra("VIEW_TYPE", isSagittal ? "sagittal" : "transverse");
+                    intent.putExtra("patient", patient);
                     startActivity(intent);
                 }
             });

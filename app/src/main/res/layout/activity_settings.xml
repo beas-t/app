@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/background_color"
     tools:context=".SettingsActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Settings"
+                android:text="@string/title_settings"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:id="@+id/profile_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -80,10 +80,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_profile_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dr. Sarah Johnson"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_color_primary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -91,8 +92,8 @@
                             android:id="@+id/view_profile_txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="View Profile"
-                            android:textColor="#6B7280"
+                            android:text="@string/label_view_profile"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -105,153 +106,6 @@
                         app:tint="#D1D5DB" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Grid Actions -->
-            <GridLayout
-                android:id="@+id/action_grid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:columnCount="2">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/sync_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_retake"
-                            app:tint="#3B82F6" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Sync Data"
-                            android:textColor="#374151"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/backup_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_reports"
-                            app:tint="#9333EA" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Backup Now"
-                            android:textColor="#374151"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/clear_cache_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_save"
-                            app:tint="#F97316" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Clear Cache"
-                            android:textColor="#374151"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/export_all_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_share"
-                            app:tint="#10B981" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Export All"
-                            android:textColor="#374151"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </GridLayout>
 
             <!-- Operational Status -->
             <com.google.android.material.card.MaterialCardView
@@ -288,15 +142,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="All Systems Operational"
+                            android:text="@string/status_all_operational"
                             android:textColor="#166534"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tv_last_synced"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Last synced: Just now"
+                            android:text="@string/status_last_synced"
                             android:textColor="#16A34A"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -317,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Storage"
+                android:text="@string/label_storage"
                 android:textColor="#6B7280"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -327,7 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -347,7 +202,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1.2 GB"
-                            android:textColor="#111827"
+                            android:textColor="@color/text_color_primary"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -358,16 +213,17 @@
                             android:layout_marginStart="4dp"
                             android:layout_toEndOf="@id/used_txt"
                             android:text="used"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_total_storage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignBaseline="@id/used_txt"
                             android:text="5 GB Total"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="12sp" />
                     </RelativeLayout>
 
@@ -426,7 +282,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
                             android:text="Scans"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="10sp" />
 
                         <View
@@ -440,7 +296,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
                             android:text="Reports"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="10sp" />
 
                         <View
@@ -453,7 +309,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cache"
-                            android:textColor="#6B7280"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -463,7 +319,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
-                        android:text="Manage Storage"
+                        android:text="@string/btn_manage_storage"
                         android:textColor="#374151"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -475,7 +331,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Features"
+                android:text="@string/header_features"
                 android:textColor="#6B7280"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -484,7 +340,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -493,78 +349,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <!-- Analytics -->
-                    <RelativeLayout
-                        android:id="@+id/btn_analytics"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_analytics"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_analytics"
-                            app:tint="#3B82F6" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_analytics"
-                            android:text="Analytics"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
-
-                    <!-- Team Management -->
-                    <RelativeLayout
-                        android:id="@+id/btn_team_management"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_team"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_team"
-                            app:tint="#9333EA" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_team"
-                            android:text="Team Management"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
 
                     <!-- Appointments -->
                     <RelativeLayout
@@ -589,7 +373,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_appointments"
                             android:text="Appointments"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"
@@ -625,43 +409,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_training"
                             android:text="Training"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
-
-                    <!-- Equipment -->
-                    <RelativeLayout
-                        android:id="@+id/btn_equipment"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_equipment"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_equipment"
-                            app:tint="#6B7280" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_equipment"
-                            android:text="Equipment"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"
@@ -688,7 +436,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -720,7 +468,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_notif"
                             android:text="Notifications"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"
@@ -755,54 +503,9 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_display"
                             android:text="Display"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
-
-                    <RelativeLayout
-                        android:id="@+id/btn_language"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_lang"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_language"
-                            app:tint="#6B7280" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_lang"
-                            android:text="Language"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="8dp"
-                            android:layout_toStartOf="@+id/arrow_lang"
-                            android:text="English"
-                            android:textColor="#9CA3AF"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:id="@+id/arrow_lang"
                             android:layout_width="16dp"
                             android:layout_height="16dp"
                             android:layout_alignParentEnd="true"
@@ -827,7 +530,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -859,42 +562,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_lock"
                             android:text="Change Password"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
-
-                    <RelativeLayout
-                        android:id="@+id/btn_data_privacy"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_privacy"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#6B7280" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_privacy"
-                            android:text="Data Privacy"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"
@@ -918,10 +586,11 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/support_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/card_background"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="0dp">
@@ -953,7 +622,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_help"
                             android:text="Help Center"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"
@@ -988,42 +657,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/icon_feedback"
                             android:text="Send Feedback"
-                            android:textColor="#374151"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_sign_in_arrow"
-                            app:tint="#D1D5DB" />
-                    </RelativeLayout>
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginStart="52dp" android:background="#F3F4F6" />
-
-                    <RelativeLayout
-                        android:id="@+id/btn_contact_support"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
-                        <ImageView
-                            android:id="@+id/icon_contact"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_doctor"
-                            app:tint="#6B7280" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/icon_contact"
-                            android:text="Contact Support"
-                            android:textColor="#374151"
+                            android:textColor="@color/text_color_secondary"
                             android:textSize="14sp" />
                         <ImageView
                             android:layout_width="16dp"

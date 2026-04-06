@@ -8,14 +8,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+
+import com.example.bladder_frontend.api.models.Patient;
+import com.example.bladder_frontend.PdfAssistant;
 import com.google.android.material.button.MaterialButton;
+import androidx.core.content.FileProvider;
+import java.io.File;
+import android.net.Uri;
 
 public class ResultActivity extends AppCompatActivity {
+    private Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        patient = (Patient) getIntent().getSerializableExtra("patient");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,14 +53,41 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         TextView tvVolumeValue = findViewById(R.id.tvVolumeValue);
-        String volume = tvVolumeValue != null ? tvVolumeValue.getText().toString() : "450";
+        TextView tvStatus = findViewById(R.id.tvStatus);
+        TextView tvConfidence = findViewById(R.id.tvConfidence);
+        
+        String volume = getIntent().getStringExtra("VOLUME");
+        String status = getIntent().getStringExtra("STATUS");
+        String level = getIntent().getStringExtra("LEVEL");
+        
+        if (tvVolumeValue != null && volume != null) {
+            tvVolumeValue.setText(volume);
+        }
+        
+        if (tvStatus != null) {
+            if (status != null) {
+                tvStatus.setText(status);
+                if (status.equalsIgnoreCase("Distended")) {
+                    tvStatus.setTextColor(android.graphics.Color.RED);
+                    tvStatus.setBackgroundTintList(ContextCompat.getColorStateList(this, android.R.color.holo_red_light));
+                }
+            } else if (level != null) {
+                tvStatus.setText("AI Level: " + level);
+            }
+        }
+
+        if (tvConfidence != null) {
+            float confidence = getIntent().getFloatExtra("CONFIDENCE", 0.95f);
+            int confPercent = (int) (confidence * 100);
+            tvConfidence.setText(confPercent + "% Conf.");
+        }
 
         MaterialButton btnShare = findViewById(R.id.btnShare);
         if (btnShare != null) {
             btnShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    shareReport(volume);
+                    shareReport(volume, status);
                 }
             });
         }
@@ -73,17 +110,40 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
-    private void shareReport(String volume) {
-        String shareBody = "BladSense AI Analysis Result\n" +
-                "Calculated Bladder Volume: " + volume + " ml\n" +
-                "Status: Normal Range\n" +
-                "Generated via BladSense AI App";
-
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Bladder Analysis Report");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+    private void shareReport(String volume, String status) {
+        File directory = new File(getExternalFilesDir(null), "Reports");
+        if (!directory.exists()) directory.mkdirs();
         
-        startActivity(Intent.createChooser(sharingIntent, "Share Report via"));
+        String patientName = (patient != null) ? patient.getName() : "Anonymous";
+        String patientId = (patient != null) ? patient.getPatientId() : "N/A";
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        
+        String fileName = "ShareReport-" + timeStamp + ".pdf";
+        if (patient != null && patient.getName() != null) {
+            fileName = "Report-" + patient.getName().replaceAll("[^a-zA-Z0-9]", "_") + "-" + timeStamp + ".pdf";
+        }
+        
+        File file = new File(directory, fileName);
+
+        // Pass the actual Patient object to ensure the name is reflected in the PDF content
+        PdfAssistant.createProfessionalReport(this, file, volume, status != null ? status : "Normal Range", patient, success -> {
+            if (!success) {
+                Toast.makeText(this, "Failed to prepare report for sharing", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                Uri contentUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+                
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("application/pdf");
+                sharingIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+                sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                
+                startActivity(Intent.createChooser(sharingIntent, "Share Professional Report via"));
+            } catch (Exception e) {
+                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

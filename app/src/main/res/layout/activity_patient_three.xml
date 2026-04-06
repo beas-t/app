@@ -93,7 +93,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_white_bg"
-                android:hint="James Wilson"
+                android:hint="Enter Name"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#111827" />
@@ -113,7 +113,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_white_bg"
-                android:hint="PT-8823"
+                android:hint="Enter Patient ID"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#111827" />
@@ -145,7 +145,7 @@
                         android:layout_height="56dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/rounded_white_bg"
-                        android:hint="45"
+                        android:hint="0"
                         android:inputType="number"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"

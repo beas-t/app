@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
+import android.widget.TextView;
+import com.example.bladder_frontend.api.SessionManager;
+import com.example.bladder_frontend.utils.ImageUtils;
+import com.example.bladder_frontend.utils.StorageUtils;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,42 +23,35 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Profile Card
         MaterialCardView profileCard = findViewById(R.id.profile_card);
+        TextView tvProfileName = findViewById(R.id.tv_profile_name);
+        SessionManager sessionManager = new SessionManager(this);
+        
+        if (tvProfileName != null) {
+            String name = sessionManager.getDoctorName();
+            if (name != null && !name.isEmpty()) {
+                tvProfileName.setText(name);
+            }
+        }
+
+        ImageView profileImage = findViewById(R.id.profile_image);
+        if (profileImage != null) {
+            String picUrl = sessionManager.getProfilePicture();
+            if (!picUrl.isEmpty()) {
+                ImageUtils.loadImageFromUrl(this, profileImage, picUrl);
+            }
+        }
+        
         if (profileCard != null) {
             profileCard.setOnClickListener(v -> startActivity(new Intent(this, EditProfileActivity.class)));
         }
 
-        // Grid Actions
-        MaterialCardView syncCard = findViewById(R.id.sync_card);
-        if (syncCard != null) {
-            syncCard.setOnClickListener(v -> Toast.makeText(this, "Syncing data...", Toast.LENGTH_SHORT).show());
-        }
-
-        MaterialCardView backupCard = findViewById(R.id.backup_card);
-        if (backupCard != null) {
-            backupCard.setOnClickListener(v -> startActivity(new Intent(this, BackupActivity.class)));
-        }
-
-        MaterialCardView clearCacheCard = findViewById(R.id.clear_cache_card);
-        if (clearCacheCard != null) {
-            clearCacheCard.setOnClickListener(v -> startActivity(new Intent(this, Cache_oneActivity.class)));
-        }
-
-        MaterialCardView exportAllCard = findViewById(R.id.export_all_card);
-        if (exportAllCard != null) {
-            exportAllCard.setOnClickListener(v -> startActivity(new Intent(this, ExpActivity.class)));
+        // Status Card Sync
+        View statusCard = findViewById(R.id.status_card);
+        if (statusCard != null) {
+            statusCard.setOnClickListener(v -> performDataSync());
         }
 
         // Features
-        View btnAnalytics = findViewById(R.id.btn_analytics);
-        if (btnAnalytics != null) {
-            btnAnalytics.setOnClickListener(v -> startActivity(new Intent(this, AnalyticsActivity.class)));
-        }
-
-        View btnTeamManagement = findViewById(R.id.btn_team_management);
-        if (btnTeamManagement != null) {
-            btnTeamManagement.setOnClickListener(v -> startActivity(new Intent(this, TeamActivity.class)));
-        }
-
         View btnAppointments = findViewById(R.id.btn_appointments);
         if (btnAppointments != null) {
             btnAppointments.setOnClickListener(v -> startActivity(new Intent(this, AppointmentActivity.class)));
@@ -64,11 +60,6 @@ public class SettingsActivity extends AppCompatActivity {
         View btnTraining = findViewById(R.id.btn_training);
         if (btnTraining != null) {
             btnTraining.setOnClickListener(v -> startActivity(new Intent(this, TrainingActivity.class)));
-        }
-
-        View btnEquipment = findViewById(R.id.btn_equipment);
-        if (btnEquipment != null) {
-            btnEquipment.setOnClickListener(v -> startActivity(new Intent(this, EquipActivity.class)));
         }
 
         // App Settings
@@ -82,20 +73,10 @@ public class SettingsActivity extends AppCompatActivity {
             btnDisplay.setOnClickListener(v -> startActivity(new Intent(this, DisplayActivity.class)));
         }
 
-        View btnLanguage = findViewById(R.id.btn_language);
-        if (btnLanguage != null) {
-            btnLanguage.setOnClickListener(v -> startActivity(new Intent(this, LanguageActivity.class)));
-        }
-
         // Privacy & Security
         View btnChangePassword = findViewById(R.id.btn_change_password);
         if (btnChangePassword != null) {
             btnChangePassword.setOnClickListener(v -> startActivity(new Intent(this, SecurityActivity.class)));
-        }
-
-        View btnDataPrivacy = findViewById(R.id.btn_data_privacy);
-        if (btnDataPrivacy != null) {
-            btnDataPrivacy.setOnClickListener(v -> startActivity(new Intent(this, PrivacyActivity.class)));
         }
 
         // Support
@@ -109,11 +90,6 @@ public class SettingsActivity extends AppCompatActivity {
             btnFeedback.setOnClickListener(v -> startActivity(new Intent(this, FeedActivity.class)));
         }
 
-        View btnContactSupport = findViewById(R.id.btn_contact_support);
-        if (btnContactSupport != null) {
-            btnContactSupport.setOnClickListener(v -> startActivity(new Intent(this, ContactActivity.class)));
-        }
-
         View btnAbout = findViewById(R.id.btn_about);
         if (btnAbout != null) {
             btnAbout.setOnClickListener(v -> startActivity(new Intent(this, AboutActivity.class)));
@@ -123,6 +99,12 @@ public class SettingsActivity extends AppCompatActivity {
         LinearLayout btnLogout = findViewById(R.id.btn_logout);
         if (btnLogout != null) {
             btnLogout.setOnClickListener(v -> startActivity(new Intent(this, LogoutActivity.class)));
+        }
+
+        // Manage Storage Button
+        View btnManageStorage = findViewById(R.id.btn_manage_storage);
+        if (btnManageStorage != null) {
+            btnManageStorage.setOnClickListener(v -> startActivity(new Intent(this, CacheActivity.class)));
         }
 
         // Bottom Navigation
@@ -149,5 +131,59 @@ public class SettingsActivity extends AppCompatActivity {
                 return false;
             });
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateStorageUI();
+        
+        // Refresh profile info
+        SessionManager sessionManager = new SessionManager(this);
+        TextView tvProfileName = findViewById(R.id.tv_profile_name);
+        if (tvProfileName != null) {
+            tvProfileName.setText(sessionManager.getDoctorName());
+        }
+        
+        ImageView profileImage = findViewById(R.id.profile_image);
+        if (profileImage != null) {
+            String picUrl = sessionManager.getProfilePicture();
+            if (!picUrl.isEmpty()) {
+                ImageUtils.loadImageFromUrl(this, profileImage, picUrl);
+            }
+        }
+    }
+
+    private void updateStorageUI() {
+        TextView tvUsed = findViewById(R.id.used_txt);
+        if (tvUsed != null) {
+            long used = StorageUtils.getUsedInternalMemorySize();
+            long total = StorageUtils.getTotalInternalMemorySize();
+            tvUsed.setText(StorageUtils.formatSize(used));
+            
+            // Optional: Update total text if needed
+            TextView tvTotal = findViewById(R.id.tv_total_storage); // If exists in XML
+            if (tvTotal != null) {
+                tvTotal.setText(StorageUtils.formatSize(total) + " Total");
+            }
+        }
+    }
+
+    private void performDataSync() {
+        TextView tvLastSynced = findViewById(R.id.tv_last_synced);
+        com.example.bladder_frontend.api.BladSenseApi api = com.example.bladder_frontend.api.RetrofitClient.getApi(this);
+        api.syncData().enqueue(new retrofit2.Callback<okhttp3.ResponseBody>() {
+            @Override
+            public void onResponse(retrofit2.Call<okhttp3.ResponseBody> call, retrofit2.Response<okhttp3.ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    android.widget.Toast.makeText(SettingsActivity.this, "Data synced successfully", android.widget.Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<okhttp3.ResponseBody> call, Throwable t) {
+                android.widget.Toast.makeText(SettingsActivity.this, "Sync failed: " + t.getMessage(), android.widget.Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

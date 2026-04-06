@@ -123,6 +123,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_tag_green"
@@ -133,6 +134,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tvConfidence"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"

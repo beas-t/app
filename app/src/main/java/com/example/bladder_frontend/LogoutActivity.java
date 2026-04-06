@@ -26,6 +26,14 @@ public class LogoutActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Actually clear the session!
+                com.example.bladder_frontend.api.SessionManager sessionManager = 
+                    new com.example.bladder_frontend.api.SessionManager(LogoutActivity.this);
+                sessionManager.clearSession();
+                
+                // Also reset Retrofit to clear any cached interceptors
+                com.example.bladder_frontend.api.RetrofitClient.resetRetrofit();
+
                 // Return to Login Screen or Role Selection
                 Intent intent = new Intent(LogoutActivity.this, RoleSelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -9,9 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.bladder_frontend.api.models.Patient;
+
 public class Report_oneActivity extends AppCompatActivity {
 
     private String patientName, reportId, scanDate, volume, status;
+    private Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +28,16 @@ public class Report_oneActivity extends AppCompatActivity {
         scanDate = intent.getStringExtra("scan_date");
         volume = intent.getStringExtra("volume");
         status = intent.getStringExtra("status");
+        patient = (Patient) intent.getSerializableExtra("patient");
 
         // Fallback to defaults if data is missing
-        if (patientName == null) patientName = "James Wilson";
-        if (reportId == null) reportId = "R-1023";
-        if (scanDate == null) scanDate = "Mar 10, 2024";
-        if (volume == null) volume = "450 ml";
-        if (status == null) status = "Normal";
+        // Fallback to dynamic data if available, then generic
+        if (patientName == null && patient != null) patientName = patient.getName();
+        if (patientName == null) patientName = "Patient Name";
+        if (reportId == null) reportId = "R-0000";
+        if (scanDate == null) scanDate = "Date Unknown";
+        if (volume == null) volume = "0 ml";
+        if (status == null) status = "Unknown";
 
         // Update UI components
         TextView tvToolbarId = findViewById(R.id.tv_toolbar_id);
@@ -68,7 +74,9 @@ public class Report_oneActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent exportIntent = new Intent(Report_oneActivity.this, Report_twoActivity.class);
-                    // Pass data along if needed
+                    exportIntent.putExtra("patient", patient);
+                    exportIntent.putExtra("volume", volume);
+                    exportIntent.putExtra("status", status);
                     startActivity(exportIntent);
                 }
             });
